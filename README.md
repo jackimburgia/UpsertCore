@@ -4,6 +4,8 @@ The .NET Upsert Nuget package is for combined insert and update operations of st
 # Setup database
 
 ```sql
+CREATE SCHEMA Sales;
+
 CREATE TABLE Sales.Customer (
 	CustomerID INT NOT NULL PRIMARY KEY,
 	FirstName VARCHAR(20) NOT NULL,
