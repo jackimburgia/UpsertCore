@@ -1,4 +1,5 @@
-# The .NET Upsert Nuget package is for combined insert and update operations of strongly typed collections into SQL Server.  Multirow deletes are possible, too.
+# .Net Upsert
+The .NET Upsert Nuget package is for combined insert and update operations of strongly typed collections into SQL Server.  Multirow deletes are possible, too.
 
 # Setup database
 
