@@ -9,14 +9,6 @@ namespace Spearing.Utilities.Data.UpsertCore
 {
     public static class UpsertExtensions
     {
-        /// <summary>
-        /// Upserts the list
-        /// </summary>
-        /// <typeparam name="TListItem"></typeparam>
-        /// <typeparam name="TDbContext"></typeparam>
-        /// <param name="db"></param>
-        /// <param name="list"></param>
-        /// 
 
         private static int Timeout { get; set; }
 
