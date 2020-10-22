@@ -39,22 +39,6 @@ namespace Spearing.Utilities.Data.UpsertCore
                         .OrderBy(field => field.ColumnId)
                         .ToList();
 
-                //// Convert the list into a data table
-                //DataTable table =
-                //    list.ToDataTable(
-                //        fields
-                //            .Select(field => field.ColumnName)
-                //            .ToList()
-                //        );
-
-                //// Make sure the order of the columns in the data table are the same as the fields list
-                //SetColumnsOrder(table, fields.Select(field => field.ColumnName).ToArray());
-
-                //// Delete the user defined table type (shouldn't be there, but just in case)
-                //DeleteTableType(tableTypeName, connectionString);
-
-                //// Create the user defined table used to pass the data
-                //CreateTableType(fields, tableTypeName, connectionString);
 
                 DataTable table = CreateObjects(list, fields, tableTypeName, connectionString);
 
@@ -111,22 +95,6 @@ namespace Spearing.Utilities.Data.UpsertCore
                     throw new Exception("Missing fields");
 
 
-                //// Convert the list into a data table
-                //DataTable table =
-                //    list.ToDataTable(
-                //        fields
-                //            .Select(field => field.ColumnName)
-                //            .ToList()
-                //        );
-
-                //// Make sure the order of the columns in the data table are the same as the fields list
-                //SetColumnsOrder(table, fields.Select(field => field.ColumnName).ToArray());
-
-                //// Delete the user defined table type (shouldn't be there, but just in case)
-                //DeleteTableType(tableTypeName, connectionString);
-
-                //// Create the user defined table used to pass the data
-                //CreateTableType(fields, tableTypeName, connectionString);
 
                 DataTable table = CreateObjects(list, fields, tableTypeName, connectionString);
 
@@ -236,58 +204,6 @@ namespace Spearing.Utilities.Data.UpsertCore
 
             return table;
         }
-
-
-
-        //private static void UpdateData<TListItem>(this IEnumerable<TListItem> list, Func<string, string, string, List<TableField>, string> getSql, string schemaName, string tableName, string connectionString)
-        //{
-        //    string tableTypeName = tableName + "_" + Guid.NewGuid().ToString().Replace("-", "");
-        //    string parameterName = "@" + tableTypeName;
-        //    DataTable table;
-        //    string sql = "";
-        //    try
-        //    {
-
-        //        var properties = Extensions.GetPropertyKeys<TListItem>();
-        //        string[] propNames = properties.Select(p => p.Name).ToArray();
-
-        //        // Get the database fields for the table
-        //        var fields = GetTableFields(schemaName, tableName, connectionString)
-        //                .Where(field => propNames.Contains(field.ColumnName))
-        //                .OrderBy(field => field.ColumnId)
-        //                .ToList();
-
-        //        // Convert the list into a data table
-        //        table =
-        //            list.ToDataTable(
-        //                fields
-        //                    .Select(field => field.ColumnName)
-        //                    .ToList()
-        //                );
-
-        //        // Make sure the order of the columns in the data table are the same as the fields list
-        //        SetColumnsOrder(table, fields.Select(field => field.ColumnName).ToArray());
-
-        //        // Delete the user defined table type (shouldn't be there, but just in case)
-        //        DeleteTableType(tableTypeName, connectionString);
-
-        //        // Create the user defined table used to pass the data
-        //        CreateTableType(fields, tableTypeName, connectionString);
-
-        //        // Run the sql merge statement
-        //        sql = getSql(parameterName, schemaName, tableName, fields);
-        //        ExecuteSQL(sql, table, tableTypeName, parameterName, schemaName, tableName, fields, connectionString);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Update failed", ex);
-        //    }
-        //    finally
-        //    {
-        //        // Delete the user defined table type if it exists(may blow up here, too)
-        //        DeleteTableType(tableTypeName, connectionString);
-        //    }
-        //}
 
 
 
@@ -623,36 +539,6 @@ END
             return mergeSql;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameterName"></param>
-        /// <param name="schema"></param>
-        /// <param name="tableName"></param>
-        /// <param name="fields"></param>
-        /// <param name="updateFieldsToSkip"></param>
-        /// <returns></returns>
-        //private static string GetUpdateSql(string parameterName, string schema, string tableName, List<TableField> fields, List<string> updateFieldsToSkip)
-        //{
-        //    string keyFields = fields.KeyFields();
-
-        //    string updateFields = fields.UpdateFields(updateFieldsToSkip);
-
-        //    string updateSql = String.Format(@"
-        //        BEGIN
-        //            UPDATE {0}.{1}
-        //            SET
-        //                {4}
-        //            FROM
-        //                {0}.{1} t
-        //            JOIN
-        //                {2} s
-        //                ON {3}
-        //        END;
-        //    ", schema, tableName, parameterName, keyFields, updateFields);
-
-        //    return updateSql;
-        //}
 
 
         /// <summary>
